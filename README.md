@@ -5,12 +5,26 @@
 [![Downloads](https://img.shields.io/npm/dm/request-application.svg)](http://npm-stat.com/charts.html?package=request-application)
 [![guidelines](https://tether.github.io/contribution-guide/badge-guidelines.svg)](https://github.com/tether/contribution-guide)
 
+Parse application/json request.
 
 ## Usage
 
 ```js
+const http = require('http')
+const parse = require('request-application')
 
+
+http.createServer((req, res) => {
+  parse(req, options)
+    .then(data => {
+      // do something with data
+    }, err => {
+      // do something with 400 error
+    })
+})
 ```
+
+Options are the same passed to the module [inflate-body](https://github.com/tether/inflate-body).
 
 ## Installation
 

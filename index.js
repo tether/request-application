@@ -24,7 +24,7 @@ const strictJSONReg = /^[\x20\x09\x0a\x0d]*(\[|\{)/
 module.exports = function (request, options) {
   return text(request, options).then(str => {
     try {
-      if (strictJSONReg.test(str)) throw new Error('invalid JSON, only supports object and array')
+      if (!strictJSONReg.test(str)) throw new Error('invalid JSON, only supports object and array')
       return JSON.parse(str)
     } catch (err) {
       err.statusCode = 400

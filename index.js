@@ -9,8 +9,7 @@ const text = require('request-text')
  * @see http://www.rfc-editor.org/rfc/rfc7159.txt
  */
 
-const strictJSONReg = /^[\x20\x09\x0a\x0d]*(\[|\{)/;
-
+const strictJSONReg = /^[\x20\x09\x0a\x0d]*(\[|\{)/
 
 /**
  * Return a promise that resolves when  x-www-form-urlencoded request is parsed.
@@ -25,7 +24,7 @@ const strictJSONReg = /^[\x20\x09\x0a\x0d]*(\[|\{)/;
 module.exports = function (request, options) {
   return text(request, options).then(str => {
     try {
-      if (strictJSONReg.text(str)) throw new Error('invalid JSON, only supports object and array')
+      if (strictJSONReg.test(str)) throw new Error('invalid JSON, only supports object and array')
       return JSON.parse(str)
     } catch (err) {
       err.statusCode = 400

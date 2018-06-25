@@ -1,6 +1,6 @@
 {
   "name": "request-application",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parse application/json and other application/* HTTP requests",
   "main": "index.js",
   "scripts": {
